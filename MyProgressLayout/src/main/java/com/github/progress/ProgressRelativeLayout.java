@@ -66,9 +66,9 @@ public class ProgressRelativeLayout extends RelativeLayout {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressRelativeLayout,defStyleAttr,R.style.DefaultProgressStyle);
         int status = typedArray.getInt(R.styleable.ProgressRelativeLayout_status, status_content);
         currentStatus=status;
-        int progressViewId=typedArray.getInt(R.styleable.ProgressRelativeLayout_progressView,-1);
-        int errorViewId=typedArray.getInt(R.styleable.ProgressRelativeLayout_errorView,-1);
-        int emptyViewId=typedArray.getInt(R.styleable.ProgressRelativeLayout_emptyView,-1);
+        int progressViewId=typedArray.getResourceId(R.styleable.ProgressRelativeLayout_progressView,-1);
+        int errorViewId=typedArray.getResourceId(R.styleable.ProgressRelativeLayout_errorView,-1);
+        int emptyViewId=typedArray.getResourceId(R.styleable.ProgressRelativeLayout_emptyView,-1);
 
         getAllView(status, progressViewId, errorViewId, emptyViewId);
 
@@ -76,7 +76,8 @@ public class ProgressRelativeLayout extends RelativeLayout {
 
     }
 
-    private void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId) {
+    private void getAllView(int status, final int progressViewId, int errorViewId, int emptyViewId) {
+
         if(progressViewId==-1){
             TextView textView = new TextView(getContext());
             textView.setText("loading");
@@ -84,8 +85,8 @@ public class ProgressRelativeLayout extends RelativeLayout {
         }else{
             progressView= LayoutInflater.from(getContext()).inflate(progressViewId,null);
         }
-        setOnclick(progressView);
-        progressView.setTag(status_progress+"");
+        progressViewConfig();
+
 
 
         if (errorViewId == -1) {
@@ -95,8 +96,8 @@ public class ProgressRelativeLayout extends RelativeLayout {
         }else{
             errorView=LayoutInflater.from(getContext()).inflate(errorViewId,null);
         }
-        setOnclick(errorView);
-        errorView.setTag(status_error+"");
+        errorViewConfig();
+
 
 
         if(emptyViewId==-1){
@@ -106,8 +107,8 @@ public class ProgressRelativeLayout extends RelativeLayout {
         }else{
             emptyView= LayoutInflater.from(getContext()).inflate(emptyViewId,null);
         }
-        setOnclick(emptyView);
-        emptyView.setTag(status_empty+"");
+        emptyViewConfig();
+
 
         switch (status){
             case status_error:
@@ -132,40 +133,60 @@ public class ProgressRelativeLayout extends RelativeLayout {
             break;
         }
 
-        addView(errorView);
-        addView(emptyView);
-        addView(progressView);
+
     }
 
-    private void setOnclick(View view) {
-        if(progressView==view){
-            if(progressView!=null&&progressOnClickListener!=null){
-                progressView.setOnClickListener(new MyOnClickListener() {
-                    @Override
-                    protected void onNoDoubleClick(View v) {
-                        progressOnClickListener.progressOnClick();
-                    }
-                });
+    private void emptyViewConfig() {
+
+        emptyView.setTag(status_empty+"");
+
+        LayoutParams layoutParams=new LayoutParams(LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.addRule(CENTER_IN_PARENT);
+        emptyView.setLayoutParams(layoutParams);
+        emptyView.setOnClickListener(new MyOnClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                emptyOnClickListener.emptyOnClick();
             }
-        }else if(errorView==view){
-            if(errorView!=null&&errorOnClickListener!=null){
-                errorView.setOnClickListener(new MyOnClickListener() {
-                    @Override
-                    protected void onNoDoubleClick(View v) {
-                        errorOnClickListener.errorOnClick();
-                    }
-                });
+        });
+
+
+        addView(emptyView);
+
+    }
+
+    private void errorViewConfig() {
+
+        errorView.setTag(status_error+"");
+
+        LayoutParams layoutParams=new LayoutParams(LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.addRule(CENTER_IN_PARENT);
+        errorView.setLayoutParams(layoutParams);
+        errorView.setOnClickListener(new MyOnClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                errorOnClickListener.errorOnClick();
             }
-        }else if(emptyView==view){
-            if(emptyView!=null&&emptyOnClickListener!=null){
-                emptyView.setOnClickListener(new MyOnClickListener() {
-                    @Override
-                    protected void onNoDoubleClick(View v) {
-                        emptyOnClickListener.emptyOnClick();
-                    }
-                });
+        });
+
+        addView(errorView);
+    }
+
+    private void progressViewConfig() {
+
+        progressView.setTag(status_progress+"");
+
+        LayoutParams layoutParams=new LayoutParams(LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.addRule(CENTER_IN_PARENT);
+        progressView.setLayoutParams(layoutParams);
+        progressView.setOnClickListener(new MyOnClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                progressOnClickListener.progressOnClick();
             }
-        }
+        });
+
+        addView(progressView);
     }
 
 
@@ -227,6 +248,63 @@ public class ProgressRelativeLayout extends RelativeLayout {
 
     public void showContent(){
         changeStatus(status_content);
+    }
+
+
+    public View getErrorView() {
+        return errorView;
+    }
+
+    public void setErrorView(View errorView) {
+        if(this.errorView!=null){
+            removeView(this.errorView);
+        }
+        this.errorView = errorView;
+
+        errorViewConfig();
+
+        if(currentStatus==status_error){
+            errorView.setVisibility(VISIBLE);
+        }else{
+            errorView.setVisibility(GONE);
+        }
+
+    }
+
+    public View getEmptyView() {
+        return emptyView;
+    }
+
+    public void setEmptyView(View emptyView) {
+        if (this.emptyView == null) {
+            removeView(this.emptyView);
+        }
+        this.emptyView = emptyView;
+        emptyViewConfig();
+
+        if(currentStatus==status_empty){
+            emptyView.setVisibility(VISIBLE);
+        }else{
+            emptyView.setVisibility(GONE);
+        }
+    }
+
+    public View getProgressView() {
+        return progressView;
+    }
+
+    public void setProgressView(View progressView) {
+        if (this.progressView == null) {
+            removeView(this.progressView);
+        }
+        this.progressView = progressView;
+        progressViewConfig();
+
+        if(currentStatus==status_progress){
+            progressView.setVisibility(VISIBLE);
+        }else{
+            progressView.setVisibility(GONE);
+        }
     }
 
     public List<Integer> getIgnoreViewId() {
