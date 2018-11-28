@@ -16,21 +16,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Android"
+            android:text="Android数据来啦"
             android:gravity="center"
             android:layout_centerInParent="true"
             />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="gone"
-
-    android:visibility="gone"
-    />
     </com.github.progress.ProgressRelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         >

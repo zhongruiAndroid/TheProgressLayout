@@ -195,6 +195,7 @@ public class ProgressRelativeLayout extends RelativeLayout {
     }
     public void showError(final ErrorOnClickListener errorOnClickListener){
         if(errorOnClickListener!=null){
+            this.errorOnClickListener=errorOnClickListener;
             if (errorView != null) {
                 errorView.setOnClickListener(new MyOnClickListener() {
                     @Override
@@ -214,6 +215,7 @@ public class ProgressRelativeLayout extends RelativeLayout {
     }
     public void showEmpty(final EmptyOnClickListener emptyOnClickListener) {
         if(emptyOnClickListener!=null){
+            this.emptyOnClickListener=emptyOnClickListener;
             if(emptyView!=null){
                 emptyView.setOnClickListener(new MyOnClickListener() {
                     @Override
@@ -232,6 +234,7 @@ public class ProgressRelativeLayout extends RelativeLayout {
     }
     public void showProgress(final ProgressOnClickListener progressOnClickListener){
         if(progressOnClickListener!=null){
+            this.progressOnClickListener=progressOnClickListener;
             if(progressView!=null){
                 progressView.setOnClickListener(new MyOnClickListener() {
                     @Override
@@ -276,7 +279,7 @@ public class ProgressRelativeLayout extends RelativeLayout {
     }
 
     public void setEmptyView(View emptyView) {
-        if (this.emptyView == null) {
+        if (this.emptyView != null) {
             removeView(this.emptyView);
         }
         this.emptyView = emptyView;
@@ -294,7 +297,7 @@ public class ProgressRelativeLayout extends RelativeLayout {
     }
 
     public void setProgressView(View progressView) {
-        if (this.progressView == null) {
+        if (this.progressView != null) {
             removeView(this.progressView);
         }
         this.progressView = progressView;

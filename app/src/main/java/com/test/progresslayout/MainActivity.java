@@ -19,25 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        prl.showError(new ProgressRelativeLayout.ErrorOnClickListener() {
-            @Override
-            public void errorOnClick() {
-                Log.i("===", "===errorOnClick22222");
-            }
-        });
-        prl.showEmpty(new ProgressRelativeLayout.EmptyOnClickListener() {
-            @Override
-            public void emptyOnClick() {
-                Log.i("===", "===emptyOnClick22222");
-            }
-        });
-        prl.showProgress(new ProgressRelativeLayout.ProgressOnClickListener() {
-            @Override
-            public void progressOnClick() {
-                Log.i("===", "===progressOnClick22222");
-            }
-        });
-
 
 
         prl.setEmptyOnClickListener(new ProgressRelativeLayout.EmptyOnClickListener() {
@@ -58,6 +39,27 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("===", "===ProgressOnClickListener");
             }
         });
+
+
+        prl.showError(new ProgressRelativeLayout.ErrorOnClickListener() {
+            @Override
+            public void errorOnClick() {
+                Log.i("===", "===errorOnClick22222");
+            }
+        });
+        prl.showEmpty(new ProgressRelativeLayout.EmptyOnClickListener() {
+            @Override
+            public void emptyOnClick() {
+                Log.i("===", "===emptyOnClick22222");
+            }
+        });
+        prl.showProgress(new ProgressRelativeLayout.ProgressOnClickListener() {
+            @Override
+            public void progressOnClick() {
+                Log.i("===", "===progressOnClick22222");
+            }
+        });
+
 
         prl.setErrorView(getView(R.layout.progress_error));
         prl.setProgressView(getView(R.layout.progress_progress));
