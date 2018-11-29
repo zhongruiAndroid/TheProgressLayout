@@ -1,39 +1,34 @@
 package com.github.progress;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /***
  *   created by zhongrui on 2018/9/21
  */
-public class ProgressRelativeLayout extends RelativeLayout implements ProgressInter {
+public class ProgressLinearLayout extends LinearLayout implements ProgressInter {
 
     private ProgressLayoutHelper layoutHelper;
 
-    public ProgressRelativeLayout(Context context) {
+    public ProgressLinearLayout(Context context) {
         super(context);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(null, layoutHelper.defAttr);
     }
 
-    public ProgressRelativeLayout(Context context, AttributeSet attrs) {
+    public ProgressLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, layoutHelper.defAttr);
     }
 
-    public ProgressRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, defStyleAttr);
@@ -136,17 +131,17 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressIn
     }
 
     @Override
-    public void setErrorOnClickListener(ProgressInter.ErrorOnClickListener errorOnClickListener) {
+    public void setErrorOnClickListener(ErrorOnClickListener errorOnClickListener) {
         layoutHelper.setErrorOnClickListener(errorOnClickListener);
     }
 
     @Override
-    public void setEmptyOnClickListener(ProgressInter.EmptyOnClickListener emptyOnClickListener) {
+    public void setEmptyOnClickListener(EmptyOnClickListener emptyOnClickListener) {
         layoutHelper.setEmptyOnClickListener(emptyOnClickListener);
     }
 
     @Override
-    public void setProgressOnClickListener(ProgressInter.ProgressOnClickListener progressOnClickListener) {
+    public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener) {
         layoutHelper.setProgressOnClickListener(progressOnClickListener);
     }
 

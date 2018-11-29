@@ -1,7 +1,7 @@
 <resources>
 
 
-    <declare-styleable name="ProgressLayout">
+    <declare-styleable name="ProgressLayoutqq">
         <attr name="progressBackground" format="color"/>
         <attr name="progress" format="boolean"/>
     </declare-styleable>
@@ -14,7 +14,7 @@
         <attr name="status"  > </attr>
     </declare-styleable>
 
-    <declare-styleable name="ProgressLayout1">
+    <declare-styleable name="ProgressLayout">
         <attr name="progressView"   format="integer"></attr>
         <attr name="errorView"      format="integer"></attr>
         <attr name="emptyView"      format="integer"></attr>

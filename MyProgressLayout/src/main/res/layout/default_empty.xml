@@ -5,7 +5,7 @@
           android:layout_height="match_parent"
           android:gravity="center"
           android:orientation="vertical"
-          android:text="内容为空444"
+          android:text="内容为空"
           android:textSize="15sp"
     >
 

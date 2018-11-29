@@ -17,10 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
         prl = findViewById(R.id.prl);
 
-
-
-
-
         prl.setEmptyOnClickListener(new ProgressRelativeLayout.EmptyOnClickListener() {
             @Override
             public void emptyOnClick() {
@@ -41,58 +37,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        prl.showError(new ProgressRelativeLayout.ErrorOnClickListener() {
-            @Override
-            public void errorOnClick() {
-                Log.i("===", "===errorOnClick22222");
-            }
-        });
-        prl.showEmpty(new ProgressRelativeLayout.EmptyOnClickListener() {
-            @Override
-            public void emptyOnClick() {
-                Log.i("===", "===emptyOnClick22222");
-            }
-        });
-        prl.showProgress(new ProgressRelativeLayout.ProgressOnClickListener() {
-            @Override
-            public void progressOnClick() {
-                Log.i("===", "===progressOnClick22222");
-            }
-        });
+        prl.showError( );
+        prl.showEmpty( );
+        prl.showProgress( );
 
 
         prl.setErrorView(getView(R.layout.progress_error));
-        prl.setProgressView(getView(R.layout.progress_progress));
+//        prl.setProgressView(getView(R.layout.progress_progress));
         prl.setEmptyView(getView(R.layout.progress_empty));
 
         prl.showError();
+
     }
 
     public void empty(View view) {
-        prl.showEmpty(new ProgressRelativeLayout.EmptyOnClickListener() {
-            @Override
-            public void emptyOnClick() {
-                Log.i("===", "===emptyOnClick");
-            }
-        });
+        prl.showEmpty( );
     }
 
     public void error(View view) {
-        prl.showError(new ProgressRelativeLayout.ErrorOnClickListener() {
-            @Override
-            public void errorOnClick() {
-                Log.i("===", "===errorOnClick");
-            }
-        });
+        prl.showError( );
     }
 
     public void progress(View view) {
-        prl.showProgress(new ProgressRelativeLayout.ProgressOnClickListener() {
-            @Override
-            public void progressOnClick() {
-                Log.i("===", "===progressOnClick");
-            }
-        });
+        prl.showProgress( );
     }
 
     public void content(View view) {
