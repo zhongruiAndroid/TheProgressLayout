@@ -5,59 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <com.github.progress.ProgressRelativeLayout
-        android:id="@+id/prl"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Android数据来啦"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            />
-    </com.github.progress.ProgressRelativeLayout>
-    <LinearLayout
+<TextView
+    android:onClick="linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="linearlayout"
+    android:gravity="center"
+    />
+    <TextView
+        android:onClick="framelayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
-        <TextView
-            android:onClick="empty"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="empty"
-            />
-        <TextView
-            android:onClick="error"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="error"
-            />
-        <TextView
-            android:onClick="progress"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="progress"
-            />
-        <TextView
-            android:onClick="content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="content"
-            />
-    </LinearLayout>
+        android:text="framelayout"
+        android:gravity="center"
+        />
+    <TextView
+        android:onClick="relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="relativelayout"
+        android:gravity="center"
+        />
+
 </LinearLayout>
