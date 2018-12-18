@@ -34,7 +34,7 @@
             <enum name="progress" value="2"></enum>
             <enum name="noNetwork" value="3"></enum>
         </attr>
+        <attr name="progressLayoutStyle" format="reference"></attr>
     </declare-styleable>
 
-    <attr name="progressLayoutStyle" format="reference"></attr>
 </resources>
