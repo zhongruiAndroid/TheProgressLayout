@@ -13,6 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
+        android:gravity="center"
         >
 
         <TextView
@@ -73,6 +74,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="noNetwork"
-            android:text="noNetwork" />
+            android:text="noNetwork"
+            />
     </LinearLayout>
 </LinearLayout>

@@ -6,7 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:Progress"></item>
+        <item name="progressLayoutStyle">@style/progressStyle</item>
     </style>
-
+    <style name="progressStyle">
+        <item name="emptyView">@layout/progress_empty</item>
+        <item name="errorView">@layout/progress_error</item>
+        <item name="progressView">@layout/progress_progress</item>
+        <!-- <item name="noNetworkView">@layout/default_nonetwork</item>-->
+    </style>
 </resources>

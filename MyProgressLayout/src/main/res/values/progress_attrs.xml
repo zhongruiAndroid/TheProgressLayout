@@ -1,26 +1,40 @@
 <resources>
 
+    <declare-styleable name="ProgressLinearLayout">
+        <attr name="progressView"></attr>
+        <attr name="errorView"></attr>
+        <attr name="emptyView"></attr>
+        <attr name="noNetworkView" ></attr>
+        <attr name="status"></attr>
+    </declare-styleable>
+    <declare-styleable name="ProgressFrameLayout">
+        <attr name="progressView"></attr>
+        <attr name="errorView"></attr>
+        <attr name="emptyView"></attr>
+        <attr name="noNetworkView" ></attr>
+        <attr name="status"></attr>
+    </declare-styleable>
     <declare-styleable name="ProgressRelativeLayout">
-        <attr name="progressView"  ></attr>
-        <attr name="errorView"  ></attr>
-        <attr name="emptyView" ></attr>
-        <attr name="status"  > </attr>
+        <attr name="progressView"></attr>
+        <attr name="errorView"></attr>
+        <attr name="emptyView"></attr>
+        <attr name="noNetworkView" ></attr>
+        <attr name="status"></attr>
     </declare-styleable>
 
     <declare-styleable name="ProgressLayout">
-        <attr name="progressView"   format="integer"></attr>
-        <attr name="errorView"      format="integer"></attr>
-        <attr name="emptyView"      format="integer"></attr>
-        <attr name="noNetworkView"      format="integer"></attr>
-        <attr name="status"         format="enum">
-            <enum name="error"      value="-1"></enum>
-            <enum name="empty"      value="0"></enum>
-            <enum name="content"    value="1"></enum>
-            <enum name="progress"   value="2"></enum>
-            <enum name="noNetwork"   value="3"></enum>
+        <attr name="progressView" format="integer"></attr>
+        <attr name="errorView" format="integer"></attr>
+        <attr name="emptyView" format="integer"></attr>
+        <attr name="noNetworkView" format="integer"></attr>
+        <attr name="status" format="enum">
+            <enum name="error" value="-1"></enum>
+            <enum name="empty" value="0"></enum>
+            <enum name="content" value="1"></enum>
+            <enum name="progress" value="2"></enum>
+            <enum name="noNetwork" value="3"></enum>
         </attr>
     </declare-styleable>
 
     <attr name="progressLayoutStyle" format="reference"></attr>
-
 </resources>

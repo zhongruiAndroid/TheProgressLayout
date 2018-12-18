@@ -54,7 +54,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     }
 
     public void initAttr(AttributeSet attrs, int defStyleAttr){
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.defaultProgressStyle);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.defaultProgressStyleRes);
 
         int status = typedArray.getInt(R.styleable.ProgressLayout_status, status_content);
         int progressViewId = typedArray.getResourceId(R.styleable.ProgressLayout_progressView, -1);
@@ -75,6 +75,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(progressViewId==-1){
             TextView textView = new TextView(getContext());
             textView.setText("loading");
+            textView.setGravity(Gravity.CENTER);
             progressView=textView;
         }else{
             progressView= LayoutInflater.from(getContext()).inflate(progressViewId,null);
@@ -86,6 +87,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if (errorViewId == -1) {
             TextView textView = new TextView(getContext());
             textView.setText("error");
+            textView.setGravity(Gravity.CENTER);
             errorView=textView;
         }else{
             errorView=LayoutInflater.from(getContext()).inflate(errorViewId,null);
@@ -97,6 +99,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(emptyViewId==-1){
             TextView textView = new TextView(getContext());
             textView.setText("empty");
+            textView.setGravity(Gravity.CENTER);
             emptyView=textView;
         }else{
             emptyView= LayoutInflater.from(getContext()).inflate(emptyViewId,null);
@@ -106,6 +109,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(noNetworkViewId==-1){
             TextView textView = new TextView(getContext());
             textView.setText("noNetwork");
+            textView.setGravity(Gravity.CENTER);
             noNetworkView=textView;
         }else{
             noNetworkView= LayoutInflater.from(getContext()).inflate(noNetworkViewId,null);
