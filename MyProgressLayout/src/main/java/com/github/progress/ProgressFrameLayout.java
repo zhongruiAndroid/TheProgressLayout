@@ -53,11 +53,11 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
 
 
     @Override
-    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId) {
+    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId) {
         layoutHelper.getAllView(status,
                 progressViewId,
                 errorViewId,
-                emptyViewId);
+                emptyViewId,noNetworkViewId);
     }
 
     @Override
@@ -78,6 +78,21 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
     @Override
     public void showContent() {
         layoutHelper.showContent();
+    }
+
+    @Override
+    public void showNoNetwork() {
+        layoutHelper.showNoNetwork();
+    }
+
+    @Override
+    public View getNoNetworkView() {
+        return layoutHelper.getNoNetworkView();
+    }
+
+    @Override
+    public void setNoNetworkView(View noNetworkView) {
+        layoutHelper.setNoNetworkView(noNetworkView);
     }
 
     @Override
@@ -146,10 +161,13 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
     }
 
     @Override
+    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener) {
+        layoutHelper.setNoNetworkOnClickListener(noNetworkOnClickListener);
+    }
+
+    @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
-        if (child.getTag() == null || (!child.getTag().equals(layoutHelper.status_empty + "") && !child.getTag().equals(layoutHelper.status_error + "") && !child.getTag().equals(layoutHelper.status_progress + ""))) {
-            layoutHelper.contentView.add(child);
-        }
+        layoutHelper.addView(child,index,params);
     }
 }

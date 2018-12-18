@@ -5,5 +5,6 @@
         <item name="emptyView">@layout/default_empty</item>
         <item name="errorView">@layout/default_error</item>
         <item name="progressView">@layout/default_progress</item>
+        <item name="noNetworkView">@layout/default_nonetwork</item>
     </style>
 </resources>

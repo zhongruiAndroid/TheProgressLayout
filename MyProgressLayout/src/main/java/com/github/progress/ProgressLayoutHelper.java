@@ -26,6 +26,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     private View errorView;
     private View emptyView;
     private View progressView;
+    private View noNetworkView;
 
     public List<View> contentView = new ArrayList<View>();
     private List<Integer> ignoreViewId =new ArrayList<>();
@@ -34,6 +35,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     public final int status_empty=0;
     public final int status_content=1;
     public final int status_progress=2;
+    public final int status_noNetwork=3;
 
     public int currentStatus=status_content;
 
@@ -41,6 +43,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     public ProgressInter.ErrorOnClickListener errorOnClickListener ;
     public ProgressInter.EmptyOnClickListener emptyOnClickListener ;
     public ProgressInter.ProgressOnClickListener progressOnClickListener ;
+    public ProgressInter.NoNetworkOnClickListener noNetworkOnClickListener ;
 
     public final int defAttr=R.attr.ProgressLayoutDefStyle;
 
@@ -58,17 +61,18 @@ public class ProgressLayoutHelper implements ProgressInter{
         int progressViewId = typedArray.getResourceId(R.styleable.ProgressLayout_progressView, -1);
         int errorViewId = typedArray.getResourceId(R.styleable.ProgressLayout_errorView, -1);
         int emptyViewId = typedArray.getResourceId(R.styleable.ProgressLayout_emptyView, -1);
+        int noNetworkViewId = typedArray.getResourceId(R.styleable.ProgressLayout_noNetworkView, -1);
 
 
         currentStatus = status;
 
-        getAllView(status, progressViewId, errorViewId, emptyViewId);
+        getAllView(status, progressViewId, errorViewId, emptyViewId,noNetworkViewId);
 
         typedArray.recycle();
     }
 
     @Override
-    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId) {
+    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId) {
         if(progressViewId==-1){
             TextView textView = new TextView(getContext());
             textView.setText("loading");
@@ -100,27 +104,46 @@ public class ProgressLayoutHelper implements ProgressInter{
         }
         emptyViewConfig();
 
+        if(noNetworkViewId==-1){
+            TextView textView = new TextView(getContext());
+            textView.setText("noNetwork");
+            noNetworkView=textView;
+        }else{
+            noNetworkView= LayoutInflater.from(getContext()).inflate(noNetworkViewId,null);
+        }
+        noNetworkViewConfig();
+
 
         switch (status){
             case status_error:
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(VISIBLE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
                 break;
             case status_empty:
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(VISIBLE);
+                noNetworkView.setVisibility(GONE);
                 break;
             case status_content:
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
                 break;
             case status_progress:
                 progressView.setVisibility(VISIBLE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
+                break;
+            case status_noNetwork:
+                progressView.setVisibility(GONE);
+                errorView.setVisibility(GONE);
+                emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(VISIBLE);
                 break;
         }
 
@@ -147,12 +170,45 @@ public class ProgressLayoutHelper implements ProgressInter{
         emptyView.setOnClickListener(new MyOnClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                emptyOnClickListener.emptyOnClick();
+                if (emptyOnClickListener != null) {
+                    emptyOnClickListener.emptyOnClick();
+                }
             }
         });
 
 
         this.rootView.addView(emptyView);
+
+    }
+    private void noNetworkViewConfig() {
+
+        noNetworkView.setTag(status_noNetwork+"");
+
+        if(this.rootView instanceof RelativeLayout){
+            RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.addRule(CENTER_IN_PARENT);
+            noNetworkView.setLayoutParams(layoutParams);
+        }else if(this.rootView instanceof LinearLayout){
+            LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.gravity=Gravity.CENTER;
+            noNetworkView.setLayoutParams(layoutParams);
+        }else if(this.rootView instanceof FrameLayout){
+            FrameLayout.LayoutParams layoutParams=new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.gravity=Gravity.CENTER;
+            noNetworkView.setLayoutParams(layoutParams);
+        }
+
+        noNetworkView.setOnClickListener(new MyOnClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                if(noNetworkOnClickListener!=null){
+                    noNetworkOnClickListener.noNetworkOnClick();
+                }
+            }
+        });
+
+
+        this.rootView.addView(noNetworkView);
 
     }
 
@@ -178,7 +234,9 @@ public class ProgressLayoutHelper implements ProgressInter{
         errorView.setOnClickListener(new MyOnClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                errorOnClickListener.errorOnClick();
+                if (errorOnClickListener != null) {
+                    errorOnClickListener.errorOnClick();
+                }
             }
         });
 
@@ -207,7 +265,9 @@ public class ProgressLayoutHelper implements ProgressInter{
         progressView.setOnClickListener(new MyOnClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                progressOnClickListener.progressOnClick();
+                if (progressOnClickListener != null) {
+                    progressOnClickListener.progressOnClick();
+                }
             }
         });
 
@@ -221,24 +281,35 @@ public class ProgressLayoutHelper implements ProgressInter{
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(VISIBLE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
                 setContentViewVisibility(false);
                 break;
             case status_empty:
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(VISIBLE);
+                noNetworkView.setVisibility(GONE);
                 setContentViewVisibility(false);
                 break;
             case status_content:
                 progressView.setVisibility(GONE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
                 setContentViewVisibility(true);
                 break;
             case status_progress:
                 progressView.setVisibility(VISIBLE);
                 errorView.setVisibility(GONE);
                 emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(GONE);
+                setContentViewVisibility(false);
+                break;
+            case status_noNetwork:
+                progressView.setVisibility(GONE);
+                errorView.setVisibility(GONE);
+                emptyView.setVisibility(GONE);
+                noNetworkView.setVisibility(VISIBLE);
                 setContentViewVisibility(false);
                 break;
         }
@@ -268,8 +339,36 @@ public class ProgressLayoutHelper implements ProgressInter{
     }
 
     @Override
+    public void showNoNetwork() {
+        changeStatus(status_noNetwork);
+    }
+    @Override
     public void showContent() {
         changeStatus(status_content);
+    }
+
+    @Override
+    public View getNoNetworkView() {
+        return noNetworkView;
+    }
+
+    @Override
+    public void setNoNetworkView(View noNetworkView) {
+        if(noNetworkView==null){
+            return;
+        }
+        if(this.noNetworkView!=null){
+            this.rootView.removeView(this.noNetworkView);
+        }
+        this.noNetworkView = noNetworkView;
+
+        noNetworkViewConfig();
+
+        if(currentStatus==status_noNetwork){
+            noNetworkView.setVisibility(VISIBLE);
+        }else{
+            noNetworkView.setVisibility(GONE);
+        }
     }
 
     @Override
@@ -379,6 +478,19 @@ public class ProgressLayoutHelper implements ProgressInter{
     public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener) {
         this.progressOnClickListener=progressOnClickListener;
     }
+
+    @Override
+    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener) {
+        this.noNetworkOnClickListener = noNetworkOnClickListener;
+    }
+
+    @Override
+    public void addView(View child, int index, ViewGroup.LayoutParams params) {
+        if (child.getTag() == null || (!child.getTag().equals(status_empty + "") && !child.getTag().equals(status_error + "") && !child.getTag().equals(status_progress + "")&& !child.getTag().equals(status_noNetwork + ""))) {
+            contentView.add(child);
+        }
+    }
+
     private Context getContext(){
         return context;
     }

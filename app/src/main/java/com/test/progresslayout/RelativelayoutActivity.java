@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.github.progress.ProgressInter;
 import com.github.progress.ProgressRelativeLayout;
 
 public class RelativelayoutActivity extends AppCompatActivity {
@@ -49,7 +50,12 @@ public class RelativelayoutActivity extends AppCompatActivity {
                 Log.i("===", "===ProgressOnClickListener");
             }
         });
-
+        prl.setNoNetworkOnClickListener(new ProgressInter.NoNetworkOnClickListener() {
+            @Override
+            public void noNetworkOnClick() {
+                Log.i("===", "===NoNetworkOnClickListener");
+            }
+        });
 
 
 
@@ -90,6 +96,9 @@ public class RelativelayoutActivity extends AppCompatActivity {
 
     public void content(View view) {
         prl.showContent();
+    }
+    public void noNetwork(View view) {
+        prl.showNoNetwork();
     }
 
     public View getView(int resId) {

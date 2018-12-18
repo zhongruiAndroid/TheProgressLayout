@@ -1,6 +1,7 @@
 package com.github.progress;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -14,8 +15,11 @@ public interface ProgressInter {
     public interface ProgressOnClickListener{
         void progressOnClick();
     }
+    public interface NoNetworkOnClickListener{
+        void noNetworkOnClick();
+    }
 
-    void getAllView(int status, final int progressViewId, int errorViewId, int emptyViewId);
+    void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId);
 
     public void showError();
 
@@ -24,6 +28,11 @@ public interface ProgressInter {
     public void showProgress();
 
     public void showContent();
+    public void showNoNetwork();
+
+    public View getNoNetworkView() ;
+
+    public void setNoNetworkView(View noNetworkView);
 
     public View getErrorView();
 
@@ -50,4 +59,8 @@ public interface ProgressInter {
     public void setEmptyOnClickListener(EmptyOnClickListener emptyOnClickListener);
 
     public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener);
+    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener);
+
+    public void addView(View child, int index, ViewGroup.LayoutParams params);
+
 }
