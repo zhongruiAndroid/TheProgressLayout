@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.net.ContentHandler;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -45,7 +44,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     public ProgressInter.ProgressOnClickListener progressOnClickListener ;
     public ProgressInter.NoNetworkOnClickListener noNetworkOnClickListener ;
 
-    public final int defAttr=R.attr.ProgressLayoutDefStyle;
+    public final int defAttr=R.attr.progressLayoutStyle;
 
     private Context context;
     private ViewGroup rootView;
@@ -55,7 +54,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     }
 
     public void initAttr(AttributeSet attrs, int defStyleAttr){
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.DefaultProgressStyle);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.defaultProgressStyle);
 
         int status = typedArray.getInt(R.styleable.ProgressLayout_status, status_content);
         int progressViewId = typedArray.getResourceId(R.styleable.ProgressLayout_progressView, -1);

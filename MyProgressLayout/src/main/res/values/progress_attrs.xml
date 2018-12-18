@@ -21,6 +21,6 @@
         </attr>
     </declare-styleable>
 
-    <attr name="ProgressLayoutDefStyle" format="reference"></attr>
+    <attr name="progressLayoutStyle" format="reference"></attr>
 
 </resources>
