@@ -44,7 +44,7 @@ public class ProgressLayoutHelper implements ProgressInter{
     public ProgressInter.ProgressOnClickListener progressOnClickListener ;
     public ProgressInter.NoNetworkOnClickListener noNetworkOnClickListener ;
 
-    public final int defAttr=R.attr.progressLayoutStyle;
+    public final int defAttr=R.attr.MyProgressLayoutStyle;
 
     private Context context;
     private ViewGroup rootView;
