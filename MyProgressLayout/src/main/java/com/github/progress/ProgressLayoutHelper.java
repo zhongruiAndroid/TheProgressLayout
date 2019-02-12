@@ -119,33 +119,33 @@ public class ProgressLayoutHelper implements ProgressInter{
 
         switch (status){
             case status_error:
-                progressView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
                 errorView.setVisibility(VISIBLE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 break;
             case status_empty:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
                 emptyView.setVisibility(VISIBLE);
-                noNetworkView.setVisibility(GONE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 break;
             case status_content:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 break;
             case status_progress:
                 progressView.setVisibility(VISIBLE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 break;
             case status_noNetwork:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
                 noNetworkView.setVisibility(VISIBLE);
                 break;
         }
@@ -281,37 +281,37 @@ public class ProgressLayoutHelper implements ProgressInter{
         currentStatus=status;
         switch (currentStatus){
             case status_error:
-                progressView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
                 errorView.setVisibility(VISIBLE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 setContentViewVisibility(false);
                 break;
             case status_empty:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
                 emptyView.setVisibility(VISIBLE);
-                noNetworkView.setVisibility(GONE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 setContentViewVisibility(false);
                 break;
             case status_content:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 setContentViewVisibility(true);
                 break;
             case status_progress:
                 progressView.setVisibility(VISIBLE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
-                noNetworkView.setVisibility(GONE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noNetworkView.setVisibility(View.INVISIBLE);
                 setContentViewVisibility(false);
                 break;
             case status_noNetwork:
-                progressView.setVisibility(GONE);
-                errorView.setVisibility(GONE);
-                emptyView.setVisibility(GONE);
+                progressView.setVisibility(View.INVISIBLE);
+                errorView.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
                 noNetworkView.setVisibility(VISIBLE);
                 setContentViewVisibility(false);
                 break;
@@ -321,7 +321,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         for (View view:contentView){
             //忽略指定view
             if(!ignoreViewId.contains(view.getId())){
-                view.setVisibility(isShow?VISIBLE:GONE);
+                view.setVisibility(isShow?VISIBLE:View.INVISIBLE);
             }
         }
     }
@@ -370,7 +370,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(currentStatus==status_noNetwork){
             noNetworkView.setVisibility(VISIBLE);
         }else{
-            noNetworkView.setVisibility(GONE);
+            noNetworkView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -394,7 +394,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(currentStatus==status_error){
             errorView.setVisibility(VISIBLE);
         }else{
-            errorView.setVisibility(GONE);
+            errorView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -417,7 +417,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(currentStatus==status_empty){
             emptyView.setVisibility(VISIBLE);
         }else{
-            emptyView.setVisibility(GONE);
+            emptyView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -440,7 +440,7 @@ public class ProgressLayoutHelper implements ProgressInter{
         if(currentStatus==status_progress){
             progressView.setVisibility(VISIBLE);
         }else{
-            progressView.setVisibility(GONE);
+            progressView.setVisibility(View.INVISIBLE);
         }
     }
 
