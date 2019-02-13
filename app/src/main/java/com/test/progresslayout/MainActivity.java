@@ -25,4 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public void relativelayout(View view){
         startActivity(new Intent(this,RelativelayoutActivity.class));
     }
+    public void testMethod(View view){
+        startActivity(new Intent(this,TestActivity.class));
+    }
 }
