@@ -24,6 +24,8 @@ public class RelativelayoutActivity extends AppCompatActivity {
 
     private void initView() {
         prl = findViewById(R.id.prl);
+        View inflate = getLayoutInflater().inflate(R.layout.app_loading_view, null);
+        prl.setProgressView(inflate);
 
         prl.setEmptyOnClickListener(new ProgressRelativeLayout.EmptyOnClickListener() {
             @Override
