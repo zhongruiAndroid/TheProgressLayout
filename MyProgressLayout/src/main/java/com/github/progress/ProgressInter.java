@@ -19,7 +19,6 @@ public interface ProgressInter {
         void noNetworkOnClick();
     }
 
-    void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId);
 
     public void showError();
 

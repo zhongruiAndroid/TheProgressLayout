@@ -52,13 +52,6 @@ public class ProgressLinearLayout extends LinearLayout implements ProgressInter 
     }
 
 
-    @Override
-    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId) {
-        layoutHelper.getAllView(status,
-                progressViewId,
-                errorViewId,
-                emptyViewId,noNetworkViewId);
-    }
 
     @Override
     public void showError() {

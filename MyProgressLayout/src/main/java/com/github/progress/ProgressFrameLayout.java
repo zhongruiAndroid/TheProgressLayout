@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /***
@@ -52,13 +54,7 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
     }
 
 
-    @Override
-    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId) {
-        layoutHelper.getAllView(status,
-                progressViewId,
-                errorViewId,
-                emptyViewId,noNetworkViewId);
-    }
+
 
     @Override
     public void showError() {

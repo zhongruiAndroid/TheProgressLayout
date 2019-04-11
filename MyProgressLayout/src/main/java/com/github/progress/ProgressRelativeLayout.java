@@ -58,14 +58,6 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressIn
 
 
     @Override
-    public void getAllView(int status, int progressViewId, int errorViewId, int emptyViewId,int noNetworkViewId) {
-        layoutHelper.getAllView(status,
-                progressViewId,
-                errorViewId,
-                emptyViewId,noNetworkViewId);
-    }
-
-    @Override
     public void showError() {
         layoutHelper.showError();
     }
