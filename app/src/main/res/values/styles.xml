@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="MyProgressLayoutStyle">@style/progressLayoutStyle</item>
+        <!--<item name="MyProgressLayoutStyle">@style/progressLayoutStyle</item>-->
     </style>
     <style name="progressLayoutStyle">
         <item name="emptyView">@layout/progress_empty</item>

@@ -61,8 +61,8 @@ public class LinearlayoutActivity extends AppCompatActivity {
 
 
 //        prl.setErrorView(getView(R.layout.progress_error));
-        prl.setProgressView(getView(R.layout.progress_progress));
-        prl.setEmptyView(getView(R.layout.progress_empty));
+        prl.setProgressView(getView(R.layout.app_loading_view));
+//        prl.setEmptyView(getView(R.layout.progress_empty));
 
 
 //        prl.showError();
