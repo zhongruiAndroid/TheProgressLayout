@@ -39,7 +39,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     public int currentStatus = status_content;
 
-    private int visibleFlag = INVISIBLE;
+    private int visibleFlag = GONE;
 
 
     public ProgressInter.ErrorOnClickListener errorOnClickListener;
@@ -55,9 +55,9 @@ public class ProgressLayoutHelper implements ProgressInter {
     public ProgressLayoutHelper(Context context, ViewGroup rootView) {
         this.context = context;
         this.rootView = rootView;
-        if (rootView instanceof LinearLayout) {
-            visibleFlag = GONE;
-        }
+//        if (rootView instanceof LinearLayout) {
+//            visibleFlag = GONE;
+//        }
     }
 
     public void initAttr(AttributeSet attrs, int defStyleAttr) {
@@ -73,16 +73,18 @@ public class ProgressLayoutHelper implements ProgressInter {
 
         currentStatus = status;
 
-        progressView = LayoutInflater.from(getContext()).inflate(progressViewId, null);
-        errorView = LayoutInflater.from(getContext()).inflate(errorViewId, null);
-        emptyView = LayoutInflater.from(getContext()).inflate(emptyViewId, null);
-        noNetworkView = LayoutInflater.from(getContext()).inflate(noNetworkViewId, null);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
 
-        initAllStatusView(status);
+        progressView = inflater.inflate(progressViewId, null);
+        errorView = inflater.inflate(errorViewId, null);
+        emptyView = inflater.inflate(emptyViewId, null);
+        noNetworkView = inflater.inflate(noNetworkViewId, null);
+
+        initAllStatusView();
 
     }
 
-    public void initAllStatusView(int status) {
+    public void initAllStatusView() {
 
         progressViewConfig();
 
@@ -92,39 +94,6 @@ public class ProgressLayoutHelper implements ProgressInter {
 
         noNetworkViewConfig();
 
-
-        switch (status) {
-            case status_error:
-                progressView.setVisibility(visibleFlag);
-                errorView.setVisibility(VISIBLE);
-                emptyView.setVisibility(visibleFlag);
-                noNetworkView.setVisibility(visibleFlag);
-                break;
-            case status_empty:
-                progressView.setVisibility(visibleFlag);
-                errorView.setVisibility(visibleFlag);
-                emptyView.setVisibility(VISIBLE);
-                noNetworkView.setVisibility(visibleFlag);
-                break;
-            case status_content:
-                progressView.setVisibility(visibleFlag);
-                errorView.setVisibility(visibleFlag);
-                emptyView.setVisibility(visibleFlag);
-                noNetworkView.setVisibility(visibleFlag);
-                break;
-            case status_progress:
-                progressView.setVisibility(VISIBLE);
-                errorView.setVisibility(visibleFlag);
-                emptyView.setVisibility(visibleFlag);
-                noNetworkView.setVisibility(visibleFlag);
-                break;
-            case status_noNetwork:
-                progressView.setVisibility(visibleFlag);
-                errorView.setVisibility(visibleFlag);
-                emptyView.setVisibility(visibleFlag);
-                noNetworkView.setVisibility(VISIBLE);
-                break;
-        }
 
     }
 
@@ -144,8 +113,13 @@ public class ProgressLayoutHelper implements ProgressInter {
             }
         });
 
-
-        this.rootView.addView(emptyView);
+        if (currentStatus == status_empty) {
+            emptyView.setVisibility(VISIBLE);
+            attachViewToRootView(emptyView);
+        } else {
+            emptyView.setVisibility(visibleFlag);
+        }
+//        this.rootView.addView(emptyView);
 
     }
 
@@ -164,9 +138,14 @@ public class ProgressLayoutHelper implements ProgressInter {
                 }
             }
         });
+        if (currentStatus == status_noNetwork) {
+            noNetworkView.setVisibility(VISIBLE);
+            attachViewToRootView(noNetworkView);
+        } else {
+            noNetworkView.setVisibility(visibleFlag);
+        }
 
-
-        this.rootView.addView(noNetworkView);
+//        this.rootView.addView(noNetworkView);
 
     }
 
@@ -186,7 +165,14 @@ public class ProgressLayoutHelper implements ProgressInter {
             }
         });
 
-        this.rootView.addView(errorView);
+        if (currentStatus == status_error) {
+            errorView.setVisibility(VISIBLE);
+            attachViewToRootView(errorView);
+        } else {
+            errorView.setVisibility(visibleFlag);
+        }
+
+//        this.rootView.addView(errorView);
     }
 
     private void progressViewConfig() {
@@ -205,7 +191,13 @@ public class ProgressLayoutHelper implements ProgressInter {
             }
         });
 
-        this.rootView.addView(progressView);
+        if (currentStatus == status_progress) {
+            progressView.setVisibility(VISIBLE);
+            attachViewToRootView(progressView);
+        } else {
+            progressView.setVisibility(visibleFlag);
+        }
+//        this.rootView.addView(progressView);
     }
 
     private void setViewLayoutParams(View view) {
@@ -237,16 +229,21 @@ public class ProgressLayoutHelper implements ProgressInter {
         currentStatus = status;
         switch (currentStatus) {
             case status_error:
-                progressView.setVisibility(visibleFlag);
                 errorView.setVisibility(VISIBLE);
+                attachViewToRootView(errorView);
+
+                progressView.setVisibility(visibleFlag);
                 emptyView.setVisibility(visibleFlag);
                 noNetworkView.setVisibility(visibleFlag);
                 setContentViewVisibility(false);
+
                 break;
             case status_empty:
+                emptyView.setVisibility(VISIBLE);
+                attachViewToRootView(emptyView);
+
                 progressView.setVisibility(visibleFlag);
                 errorView.setVisibility(visibleFlag);
-                emptyView.setVisibility(VISIBLE);
                 noNetworkView.setVisibility(visibleFlag);
                 setContentViewVisibility(false);
                 break;
@@ -259,16 +256,20 @@ public class ProgressLayoutHelper implements ProgressInter {
                 break;
             case status_progress:
                 progressView.setVisibility(VISIBLE);
+                attachViewToRootView(progressView);
+
                 errorView.setVisibility(visibleFlag);
                 emptyView.setVisibility(visibleFlag);
                 noNetworkView.setVisibility(visibleFlag);
                 setContentViewVisibility(false);
                 break;
             case status_noNetwork:
+                noNetworkView.setVisibility(VISIBLE);
+                attachViewToRootView(noNetworkView);
+
                 progressView.setVisibility(visibleFlag);
                 errorView.setVisibility(visibleFlag);
                 emptyView.setVisibility(visibleFlag);
-                noNetworkView.setVisibility(VISIBLE);
                 setContentViewVisibility(false);
                 break;
         }
@@ -286,7 +287,14 @@ public class ProgressLayoutHelper implements ProgressInter {
             }
         }
     }
-
+    private void attachViewToRootView(View needAttachView){
+        if(needAttachView==null){
+            return;
+        }
+        if(this.rootView.indexOfChild(needAttachView)==-1){
+            this.rootView.addView(needAttachView);
+        }
+    }
     @Override
     public void showError() {
         changeStatus(status_error);
@@ -329,11 +337,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
         noNetworkViewConfig();
 
-        if (currentStatus == status_noNetwork) {
-            noNetworkView.setVisibility(VISIBLE);
-        } else {
-            noNetworkView.setVisibility(visibleFlag);
-        }
+
     }
 
     @Override
@@ -353,11 +357,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
         errorViewConfig();
 
-        if (currentStatus == status_error) {
-            errorView.setVisibility(VISIBLE);
-        } else {
-            errorView.setVisibility(visibleFlag);
-        }
+
     }
 
     @Override
@@ -376,11 +376,7 @@ public class ProgressLayoutHelper implements ProgressInter {
         this.emptyView = emptyView;
         emptyViewConfig();
 
-        if (currentStatus == status_empty) {
-            emptyView.setVisibility(VISIBLE);
-        } else {
-            emptyView.setVisibility(visibleFlag);
-        }
+
     }
 
     @Override
@@ -399,11 +395,6 @@ public class ProgressLayoutHelper implements ProgressInter {
         this.progressView = progressView;
         progressViewConfig();
 
-        if (currentStatus == status_progress) {
-            progressView.setVisibility(VISIBLE);
-        } else {
-            progressView.setVisibility(visibleFlag);
-        }
     }
 
     @Override

@@ -21,6 +21,8 @@
         <activity android:name=".RelativelayoutActivity"/>
         <activity android:name=".TestActivity">
         </activity>
+        <activity android:name=".ViewStubActivity">
+        </activity>
     </application>
 
 </manifest>
