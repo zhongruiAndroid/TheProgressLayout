@@ -6,20 +6,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public interface ProgressInter {
-    public interface ErrorOnClickListener{
-        void errorOnClick();
-    }
-    public interface EmptyOnClickListener{
-        void emptyOnClick();
-    }
-    public interface ProgressOnClickListener{
-        void progressOnClick();
-    }
-    public interface NoNetworkOnClickListener{
-        void noNetworkOnClick();
-    }
-
-
     public void showError();
 
     public void showEmpty();
@@ -53,12 +39,12 @@ public interface ProgressInter {
 
     public void addIgnoreViewId(Integer ignoreViewId);
 
-    public void setErrorOnClickListener(ErrorOnClickListener errorOnClickListener) ;
+    public void setErrorOnClickListener(ProgressListener.ErrorOnClickListener errorOnClickListener) ;
 
-    public void setEmptyOnClickListener(EmptyOnClickListener emptyOnClickListener);
+    public void setEmptyOnClickListener(ProgressListener.EmptyOnClickListener emptyOnClickListener);
 
-    public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener);
-    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener);
+    public void setProgressOnClickListener(ProgressListener.ProgressOnClickListener progressOnClickListener);
+    public void setNoNetworkOnClickListener(ProgressListener.NoNetworkOnClickListener noNetworkOnClickListener);
 
     public void addView(View child, int index, ViewGroup.LayoutParams params);
 

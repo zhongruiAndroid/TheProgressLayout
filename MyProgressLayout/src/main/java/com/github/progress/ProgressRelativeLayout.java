@@ -143,22 +143,22 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressIn
     }
 
     @Override
-    public void setErrorOnClickListener(ProgressInter.ErrorOnClickListener errorOnClickListener) {
+    public void setErrorOnClickListener(ProgressListener.ErrorOnClickListener errorOnClickListener) {
         layoutHelper.setErrorOnClickListener(errorOnClickListener);
     }
 
     @Override
-    public void setEmptyOnClickListener(ProgressInter.EmptyOnClickListener emptyOnClickListener) {
+    public void setEmptyOnClickListener(ProgressListener.EmptyOnClickListener emptyOnClickListener) {
         layoutHelper.setEmptyOnClickListener(emptyOnClickListener);
     }
 
     @Override
-    public void setProgressOnClickListener(ProgressInter.ProgressOnClickListener progressOnClickListener) {
+    public void setProgressOnClickListener(ProgressListener.ProgressOnClickListener progressOnClickListener) {
         layoutHelper.setProgressOnClickListener(progressOnClickListener);
     }
 
     @Override
-    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener) {
+    public void setNoNetworkOnClickListener(ProgressListener.NoNetworkOnClickListener noNetworkOnClickListener) {
         layoutHelper.setNoNetworkOnClickListener(noNetworkOnClickListener);
     }
 

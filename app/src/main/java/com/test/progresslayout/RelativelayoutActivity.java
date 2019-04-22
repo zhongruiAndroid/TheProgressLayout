@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.github.progress.ProgressInter;
+import com.github.progress.ProgressListener;
 import com.github.progress.ProgressRelativeLayout;
 
 public class RelativelayoutActivity extends AppCompatActivity {
@@ -27,13 +28,13 @@ public class RelativelayoutActivity extends AppCompatActivity {
         View inflate = getLayoutInflater().inflate(R.layout.app_loading_view, null);
         prl.setProgressView(inflate);
 
-        prl.setEmptyOnClickListener(new ProgressRelativeLayout.EmptyOnClickListener() {
+        prl.setEmptyOnClickListener(new ProgressListener.EmptyOnClickListener() {
             @Override
             public void emptyOnClick() {
                 Log.i("===", "===EmptyOnClickListener");
             }
         });
-        prl.setErrorOnClickListener(new ProgressRelativeLayout.ErrorOnClickListener() {
+        prl.setErrorOnClickListener(new ProgressListener.ErrorOnClickListener() {
             @Override
             public void errorOnClick() {
                 Log.i("===", "===ErrorOnClickListener");
@@ -46,13 +47,13 @@ public class RelativelayoutActivity extends AppCompatActivity {
                 },1000);
             }
         });
-        prl.setProgressOnClickListener(new ProgressRelativeLayout.ProgressOnClickListener() {
+        prl.setProgressOnClickListener(new ProgressListener.ProgressOnClickListener() {
             @Override
             public void progressOnClick() {
                 Log.i("===", "===ProgressOnClickListener");
             }
         });
-        prl.setNoNetworkOnClickListener(new ProgressInter.NoNetworkOnClickListener() {
+        prl.setNoNetworkOnClickListener(new ProgressListener.NoNetworkOnClickListener() {
             @Override
             public void noNetworkOnClick() {
                 Log.i("===", "===NoNetworkOnClickListener");

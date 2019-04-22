@@ -139,22 +139,22 @@ public class ProgressLinearLayout extends LinearLayout implements ProgressInter 
     }
 
     @Override
-    public void setErrorOnClickListener(ErrorOnClickListener errorOnClickListener) {
+    public void setErrorOnClickListener(ProgressListener.ErrorOnClickListener errorOnClickListener) {
         layoutHelper.setErrorOnClickListener(errorOnClickListener);
     }
 
     @Override
-    public void setEmptyOnClickListener(EmptyOnClickListener emptyOnClickListener) {
+    public void setEmptyOnClickListener(ProgressListener.EmptyOnClickListener emptyOnClickListener) {
         layoutHelper.setEmptyOnClickListener(emptyOnClickListener);
     }
 
     @Override
-    public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener) {
+    public void setProgressOnClickListener(ProgressListener.ProgressOnClickListener progressOnClickListener) {
         layoutHelper.setProgressOnClickListener(progressOnClickListener);
     }
 
     @Override
-    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener) {
+    public void setNoNetworkOnClickListener(ProgressListener.NoNetworkOnClickListener noNetworkOnClickListener) {
         layoutHelper.setNoNetworkOnClickListener(noNetworkOnClickListener);
     }
 

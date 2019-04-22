@@ -42,10 +42,10 @@ public class ProgressLayoutHelper implements ProgressInter {
     private int visibleFlag = GONE;
 
 
-    public ProgressInter.ErrorOnClickListener errorOnClickListener;
-    public ProgressInter.EmptyOnClickListener emptyOnClickListener;
-    public ProgressInter.ProgressOnClickListener progressOnClickListener;
-    public ProgressInter.NoNetworkOnClickListener noNetworkOnClickListener;
+    public ProgressListener.ErrorOnClickListener errorOnClickListener;
+    public ProgressListener.EmptyOnClickListener emptyOnClickListener;
+    public ProgressListener.ProgressOnClickListener progressOnClickListener;
+    public ProgressListener.NoNetworkOnClickListener noNetworkOnClickListener;
 
     public final int defAttr = R.attr.MyProgressLayoutStyle;
 
@@ -425,22 +425,22 @@ public class ProgressLayoutHelper implements ProgressInter {
     }
 
     @Override
-    public void setErrorOnClickListener(ErrorOnClickListener errorOnClickListener) {
+    public void setErrorOnClickListener(ProgressListener.ErrorOnClickListener errorOnClickListener) {
         this.errorOnClickListener = errorOnClickListener;
     }
 
     @Override
-    public void setEmptyOnClickListener(EmptyOnClickListener emptyOnClickListener) {
+    public void setEmptyOnClickListener(ProgressListener.EmptyOnClickListener emptyOnClickListener) {
         this.emptyOnClickListener = emptyOnClickListener;
     }
 
     @Override
-    public void setProgressOnClickListener(ProgressOnClickListener progressOnClickListener) {
+    public void setProgressOnClickListener(ProgressListener.ProgressOnClickListener progressOnClickListener) {
         this.progressOnClickListener = progressOnClickListener;
     }
 
     @Override
-    public void setNoNetworkOnClickListener(NoNetworkOnClickListener noNetworkOnClickListener) {
+    public void setNoNetworkOnClickListener(ProgressListener.NoNetworkOnClickListener noNetworkOnClickListener) {
         this.noNetworkOnClickListener = noNetworkOnClickListener;
     }
 
