@@ -1,4 +1,4 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 /***
  *   created by android on 2019/4/22

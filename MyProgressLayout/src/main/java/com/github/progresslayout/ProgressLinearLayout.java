@@ -1,36 +1,33 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /***
  *   created by zhongrui on 2018/9/21
  */
-public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
+public class ProgressLinearLayout extends LinearLayout implements ProgressInter {
 
     private ProgressLayoutHelper layoutHelper;
 
-    public ProgressFrameLayout(Context context) {
+    public ProgressLinearLayout(Context context) {
         super(context);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(null, layoutHelper.defAttr);
     }
 
-    public ProgressFrameLayout(Context context, AttributeSet attrs) {
+    public ProgressLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, layoutHelper.defAttr);
     }
 
-    public ProgressFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, defStyleAttr);
@@ -52,7 +49,6 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
         typedArray.recycle();*/
 
     }
-
 
 
 

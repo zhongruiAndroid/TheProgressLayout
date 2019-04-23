@@ -1,4 +1,4 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,14 +10,12 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 import static android.widget.RelativeLayout.CENTER_IN_PARENT;
 

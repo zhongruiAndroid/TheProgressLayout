@@ -5,11 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.github.progress.ProgressFrameLayout;
-import com.github.progress.ProgressInter;
-import com.github.progress.ProgressLinearLayout;
-import com.github.progress.ProgressListener;
-import com.github.progress.ProgressRelativeLayout;
+import com.github.progresslayout.ProgressLinearLayout;
+import com.github.progresslayout.ProgressListener;
 
 public class LinearlayoutActivity extends AppCompatActivity {
 

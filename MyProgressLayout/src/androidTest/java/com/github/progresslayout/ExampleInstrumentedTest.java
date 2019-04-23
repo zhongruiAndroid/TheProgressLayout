@@ -1,4 +1,4 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

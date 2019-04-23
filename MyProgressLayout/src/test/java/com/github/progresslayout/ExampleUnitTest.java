@@ -1,4 +1,4 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import org.junit.Test;
 

@@ -8,7 +8,7 @@
     tools:context=".RelativelayoutActivity"
     tools:ignore="MissingDefaultResource">
 
-    <com.github.progress.ProgressRelativeLayout
+    <com.github.progresslayout.ProgressRelativeLayout
         android:id="@+id/prl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,7 +28,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="Android数据来啦" />
-    </com.github.progress.ProgressRelativeLayout>
+    </com.github.progresslayout.ProgressRelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

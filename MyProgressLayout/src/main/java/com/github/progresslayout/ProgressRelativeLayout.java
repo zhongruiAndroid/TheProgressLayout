@@ -1,10 +1,9 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.util.List;
@@ -12,23 +11,23 @@ import java.util.List;
 /***
  *   created by zhongrui on 2018/9/21
  */
-public class ProgressLinearLayout extends LinearLayout implements ProgressInter {
+public class ProgressRelativeLayout extends RelativeLayout implements ProgressInter {
 
     private ProgressLayoutHelper layoutHelper;
 
-    public ProgressLinearLayout(Context context) {
+    public ProgressRelativeLayout(Context context) {
         super(context);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(null, layoutHelper.defAttr);
     }
 
-    public ProgressLinearLayout(Context context, AttributeSet attrs) {
+    public ProgressRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, layoutHelper.defAttr);
     }
 
-    public ProgressLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, defStyleAttr);
@@ -50,7 +49,6 @@ public class ProgressLinearLayout extends LinearLayout implements ProgressInter 
         typedArray.recycle();*/
 
     }
-
 
 
     @Override

@@ -1,39 +1,33 @@
-package com.github.progress;
+package com.github.progresslayout;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /***
  *   created by zhongrui on 2018/9/21
  */
-public class ProgressRelativeLayout extends RelativeLayout implements ProgressInter {
+public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
 
     private ProgressLayoutHelper layoutHelper;
 
-    public ProgressRelativeLayout(Context context) {
+    public ProgressFrameLayout(Context context) {
         super(context);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(null, layoutHelper.defAttr);
     }
 
-    public ProgressRelativeLayout(Context context, AttributeSet attrs) {
+    public ProgressFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, layoutHelper.defAttr);
     }
 
-    public ProgressRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         layoutHelper = new ProgressLayoutHelper(getContext(), this);
         initAttr(attrs, defStyleAttr);
@@ -55,6 +49,8 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressIn
         typedArray.recycle();*/
 
     }
+
+
 
 
     @Override

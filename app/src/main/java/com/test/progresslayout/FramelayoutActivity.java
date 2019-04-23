@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.github.progress.ProgressFrameLayout;
-import com.github.progress.ProgressInter;
-import com.github.progress.ProgressListener;
-import com.github.progress.ProgressRelativeLayout;
+import com.github.progresslayout.ProgressFrameLayout;
+import com.github.progresslayout.ProgressListener;
 
 public class FramelayoutActivity extends AppCompatActivity {
     ProgressFrameLayout prl;

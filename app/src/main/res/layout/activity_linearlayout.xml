@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <com.github.progress.ProgressLinearLayout
+    <com.github.progresslayout.ProgressLinearLayout
         android:id="@+id/prl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:text="Android数据来啦" />
-    </com.github.progress.ProgressLinearLayout>
+    </com.github.progresslayout.ProgressLinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
