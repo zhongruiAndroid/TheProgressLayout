@@ -7,13 +7,16 @@ import java.util.List;
 
 public interface ProgressInter {
     public void showError();
-
     public void showEmpty();
-
     public void showProgress();
-
     public void showContent();
     public void showNoNetwork();
+
+    public boolean isShowError();
+    public boolean isShowEmpty();
+    public boolean isShowProgress();
+    public boolean isShowContent();
+    public boolean isShowNoNetwork();
 
     public View getNoNetworkView() ;
 

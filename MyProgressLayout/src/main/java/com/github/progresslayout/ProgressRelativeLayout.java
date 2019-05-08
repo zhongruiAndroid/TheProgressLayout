@@ -161,4 +161,29 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressIn
         super.addView(child, index, params);
         layoutHelper.addView(child,index,params);
     }
+
+    @Override
+    public boolean isShowError() {
+        return layoutHelper.isShowError();
+    }
+
+    @Override
+    public boolean isShowEmpty() {
+        return layoutHelper.isShowEmpty();
+    }
+
+    @Override
+    public boolean isShowProgress() {
+        return layoutHelper.isShowProgress();
+    }
+
+    @Override
+    public boolean isShowContent() {
+        return layoutHelper.isShowContent() ;
+    }
+
+    @Override
+    public boolean isShowNoNetwork() {
+        return layoutHelper.isShowNoNetwork();
+    }
 }

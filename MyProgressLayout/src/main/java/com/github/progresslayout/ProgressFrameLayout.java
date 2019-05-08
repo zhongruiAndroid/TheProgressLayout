@@ -79,6 +79,31 @@ public class ProgressFrameLayout extends FrameLayout implements ProgressInter {
     }
 
     @Override
+    public boolean isShowError() {
+        return layoutHelper.isShowError();
+    }
+
+    @Override
+    public boolean isShowEmpty() {
+        return layoutHelper.isShowEmpty();
+    }
+
+    @Override
+    public boolean isShowProgress() {
+        return layoutHelper.isShowProgress();
+    }
+
+    @Override
+    public boolean isShowContent() {
+        return layoutHelper.isShowContent() ;
+    }
+
+    @Override
+    public boolean isShowNoNetwork() {
+        return layoutHelper.isShowNoNetwork();
+    }
+
+    @Override
     public View getNoNetworkView() {
         return layoutHelper.getNoNetworkView();
     }

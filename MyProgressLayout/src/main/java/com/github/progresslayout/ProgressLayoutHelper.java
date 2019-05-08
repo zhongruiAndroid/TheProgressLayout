@@ -319,6 +319,33 @@ public class ProgressLayoutHelper implements ProgressInter {
     }
 
     @Override
+    public boolean isShowError() {
+        return currentStatus==status_error;
+    }
+
+    @Override
+    public boolean isShowEmpty() {
+        return currentStatus==status_empty;
+    }
+
+    @Override
+    public boolean isShowProgress() {
+        return currentStatus==status_progress;
+    }
+
+    @Override
+    public boolean isShowContent() {
+        return currentStatus== status_content;
+    }
+
+    @Override
+    public boolean isShowNoNetwork() {
+        return currentStatus==status_noNetwork;
+    }
+
+
+
+    @Override
     public View getNoNetworkView() {
         return noNetworkView;
     }
@@ -468,4 +495,5 @@ public class ProgressLayoutHelper implements ProgressInter {
 
         protected abstract void onNoDoubleClick(View v);
     }
+
 }
