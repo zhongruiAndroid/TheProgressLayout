@@ -1,5 +1,7 @@
 # TheProgressLayout
-[ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/MyProgressLayout/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/MyProgressLayout/_latestVersion)
+
+|  最新版本号  |[ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/MyProgressLayout/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/MyProgressLayout/_latestVersion) |
+|--------|----|
 ```gradle
 implementation 'com.github:MyProgressLayout:版本号看上面'
 ```
