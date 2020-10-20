@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="defaultProgressStyleRes">
+    <style name="BaseProgressStyleRes">
         <item name="emptyView">@layout/default_empty</item>
         <item name="errorView">@layout/default_error</item>
         <item name="progressView">@layout/default_progress</item>
