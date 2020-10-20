@@ -59,7 +59,7 @@ public class ProgressLayoutHelper implements ProgressInter {
     }
 
     public void initAttr(AttributeSet attrs, int defStyleAttr) {
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.defaultProgressStyleRes);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayout, defStyleAttr, R.style.BaseProgressStyleRes);
 
         int status = typedArray.getInt(R.styleable.ProgressLayout_status, status_content);
         int progressViewId = typedArray.getResourceId(R.styleable.ProgressLayout_progressView, R.layout.default_progress);
