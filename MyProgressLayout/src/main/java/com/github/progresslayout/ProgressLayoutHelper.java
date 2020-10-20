@@ -97,7 +97,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     private void emptyViewConfig() {
 
-        emptyView.setTag(status_empty + "");
+        emptyView.setTag(R.id.progress_tag,status_empty + "");
 
 
         setViewLayoutParams(emptyView);
@@ -123,7 +123,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     private void noNetworkViewConfig() {
 
-        noNetworkView.setTag(status_noNetwork + "");
+        noNetworkView.setTag(R.id.progress_tag,status_noNetwork + "");
 
 
         setViewLayoutParams(noNetworkView);
@@ -149,7 +149,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     private void errorViewConfig() {
 
-        errorView.setTag(status_error + "");
+        errorView.setTag(R.id.progress_tag,status_error + "");
 
         setViewLayoutParams(errorView);
 
@@ -175,7 +175,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     private void progressViewConfig() {
 
-        progressView.setTag(status_progress + "");
+        progressView.setTag(R.id.progress_tag,status_progress + "");
 
         setViewLayoutParams(progressView);
 
@@ -471,7 +471,7 @@ public class ProgressLayoutHelper implements ProgressInter {
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
-        if (child.getTag() == null || (!child.getTag().equals(status_empty + "") && !child.getTag().equals(status_error + "") && !child.getTag().equals(status_progress + "") && !child.getTag().equals(status_noNetwork + ""))) {
+        if (child.getTag(R.id.progress_tag) == null || (!child.getTag(R.id.progress_tag).equals(status_empty + "") && !child.getTag(R.id.progress_tag).equals(status_error + "") && !child.getTag(R.id.progress_tag).equals(status_progress + "") && !child.getTag(R.id.progress_tag).equals(status_noNetwork + ""))) {
             contentView.add(child);
         }
     }
