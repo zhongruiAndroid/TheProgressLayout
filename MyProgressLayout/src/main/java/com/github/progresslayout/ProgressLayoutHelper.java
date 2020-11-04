@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 import static android.widget.RelativeLayout.CENTER_IN_PARENT;
 
@@ -66,6 +67,17 @@ public class ProgressLayoutHelper implements ProgressInter {
         int errorViewId = typedArray.getResourceId(R.styleable.ProgressLayout_errorView, R.layout.default_error);
         int emptyViewId = typedArray.getResourceId(R.styleable.ProgressLayout_emptyView, R.layout.default_empty);
         int noNetworkViewId = typedArray.getResourceId(R.styleable.ProgressLayout_noNetworkView, R.layout.default_nonetwork);
+
+
+        int hiddenFlag = typedArray.getInt(R.styleable.ProgressLayout_hiddenFlag, 1);
+        if(rootView instanceof LinearLayout){
+            hiddenFlag= 0;
+        }
+        if(hiddenFlag==0){
+            visibleFlag=GONE;
+        }else{
+            visibleFlag=INVISIBLE;
+        }
 
         typedArray.recycle();
 

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="RelativeLayout"
+            android:text="RelativeLayout_top显示"
             android:layout_alignParentTop="true"
             />
         <TextView
